@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="topbar">
+            <!-- Hamberguer menu -->
+            <div class="hamberguer">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <!-- Profile Picture -->
+            <div class="profile">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="">
+            </div>
+        </div>
+        <div class="container">
+            <h2>Devices</h2>
+            <hr>
+            <div class="devices">
+                <div class="device">
+                    <div class="color"></div>
+                    <div class="details">
+                        <h3 class="name">Device Name</h3>
+                        <p class="last">Last Location: lat: 12.99218, long: 75.3403</p> 
+                        <p class="discription">Discription</p>
+                        <div class="editload">
+                            <a href="#">Edit</a>
+                            <a href="#"><img src="https://img.icons8.com/ios/50/000000/refresh.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add btn -->
+        <button class="addbtn"><img src="https://img.icons8.com/ios/50/000000/add.png" alt=""></button>
+    </div>
+    <div id="map">
+        
+    </div>
+</body>
+
+</html>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="main.js"></script>

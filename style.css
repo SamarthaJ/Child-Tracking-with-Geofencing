@@ -1,0 +1,144 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#map {
+    z-index: 0;
+    height: 100%;
+    width: calc(100% - 300px); /* Adjust width considering the wider sidebar */
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.sidebar {
+    z-index: 1;
+    width: 300px; /* Increase the width of the sidebar */
+    height: 100%;
+    background-color: #293045; /* Updated background color */
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 50px rgba(0,0,0,0.1);
+    color: #fff; /* Text color updated to white for better contrast */
+}
+
+.topbar {
+    margin: 10px 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: linear-gradient(to right,#3C1C6F,#7236D5); /* Gradient background */
+    border-top-right-radius: 50px; /* Rounded top-right corner */
+    border-bottom-right-radius: 50px; /* Rounded bottom-right corner */
+}
+
+.hamberguer .line {
+    width: 25px;
+    height: 3px;
+    background-color: #fff; /* Updated to white for better contrast */
+    margin: 4px 0;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 20px 10px; /* Increased padding for better spacing */
+}
+
+.container h2 {
+    margin: 0 0 10px 0; /* Adjusted margins for better spacing */
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.container hr {
+    border: 0;
+    height: 1px;
+    background-color: #444;
+    margin: 10px 0;
+}
+
+
+.devices .device {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #333; /* Text color inside device */
+    position: relative; /* To use absolute positioning for .color */
+    overflow: hidden;
+}
+
+.devices .device .color {
+    width: 10%; /* Set width to 10% */
+    height: 100%; /* Full height */
+    background-color: #007bff; /* Blue background */
+    position: absolute; /* Positioning to align with .device */
+    top: 0;
+    left: 0;
+}
+
+.devices .device .details {
+    flex: 1;
+    padding-left: 10px; /* Add padding for better spacing */
+    margin-left: 10%; /* Offset details to account for .color width */
+}
+
+.devices .device .details .name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.devices .device .details .last, .devices .device .details .discription {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.devices .device .details .editload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.devices .device .details .editload a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.devices .device .details .editload a img {
+    width: 15px;
+    height: 15px;
+}
+
+.addbtn {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
