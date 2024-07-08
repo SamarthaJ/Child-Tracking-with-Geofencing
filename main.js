@@ -16,6 +16,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('mySidebar');
     const content = document.querySelector('.content');
     const name_of_device = document.querySelector('.name');
+    const editButtons = document.querySelectorAll('.edit-btn');
+
+    // Event listener for edit button click
+    editButtons.forEach(btn => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            const deviceElement = event.target.closest('.device');
+            const name = deviceElement.querySelector('.name').textContent.trim();
+            const description = deviceElement.querySelector('.description').textContent.trim();
+
+            // Prompt for new name and description
+            const newName = prompt('Enter new device name:', name);
+            const newDescription = prompt('Enter new description:', description);
+
+            // Update device details if newName and newDescription are not null
+            if (newName !== null && newDescription !== null) {
+                deviceElement.querySelector('.name').textContent = newName;
+                deviceElement.querySelector('.description').textContent = newDescription;
+            }
+        });
+    });
+
+
 
     name_of_device.addEventListener('click', function(){
         var newLatLng = [12.99218, 75.3403]; // New marker position

@@ -293,3 +293,39 @@ body {
 
 }
 
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.modal-buttons {
+    text-align: right;
+}
+
+.modal-buttons button {
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
