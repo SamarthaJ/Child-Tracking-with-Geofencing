@@ -1,15 +1,14 @@
-body {
-    background-color: #000;
-}
 :root {
     --primary-color: #4a90e2;
-    --bg-color: #000000;
+    --bg-color: #f4f7fa;
     --text-color: #333;
     --sidebar-bg: #ffffff;
     --sidebar-hover: #e6f0ff;
 }
-
-body html {
+.leaflet-control-attribution {
+    display: none !important;
+}
+body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -100,7 +99,6 @@ body html {
     flex: 1;
     transition: margin-left .3s;
     margin-left: 250px;
-
 }
 
 .sidebar.closed ~ .content {
@@ -114,16 +112,6 @@ body html {
     overflow-y: auto;
     box-shadow: 2px 0 50px rgba(0,0,0,0.1);
     transition: 0.3s;
-}
-
-.topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background: linear-gradient(to right,#3C1C6F,#7236D5);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 
 .profile img {
@@ -229,37 +217,79 @@ body html {
     height: 100%;
     transition: width .3s;
 }
-
 @media screen and (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; /* Change flex direction to column for mobile */
+    }
+
+    #map {
+        order: 1; /* Ensure map comes first */
+        width: 100%; /* Full width for map */
+    }
+    span {
+        display: none;
+    }
+    .sidebar-header {
+        display: none;
+    }
+    .newsidebar {
+        order: 2; /* Put newsidebar in the middle */
+        width: 100%; /* Full width for newsidebar */
+        height: auto;
+    }
+
     .sidebar {
-        width: 70px;
+        order: 3; /* Put sidebar at the bottom */
+        width: 100%; /* Full width for sidebar */
+        position: relative; /* Reset position */
+        height: auto; /* Allow height to adjust */
+        display: flex; /* Display children in a row */
+        justify-content: space-around; /* Center items with space between */
+        align-items: center; /* Center vertically */
+        padding: 5px 0; /* Add padding for spacing */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap;
     }
 
-    .sidebar .sidebar-header h3 {
-        display: none;
+    .sidebar.closed {
+        width: 100%; /* Adjust width when closed */
     }
 
-    .sidebar a span {
-        display: none;
+    .sidebar.closed ~ .content {
+        margin-left: 0; /* Adjust margin when sidebar is closed */
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px; /* Add smaller margin between links */
+        padding: 5px; /* Add padding inside links */
+        min-width: 70px; /* Minimum width for links */
+        white-space: nowrap; /* Prevent text wrap */
+    }
+
+    .sidebar a:first-child {
+        display: none; /* Hide the first link */
+    }
+
+    .sidebar a:hover {
+        background-color: var(--sidebar-hover);
+        color: var(--primary-color);
+    }
+
+    .sidebar a i {
+        margin-right: 5px; /* Add space between icon and text */
     }
 
     .content {
-        margin-left: 70px;
+        margin-left: 0; /* Reset margin */
+        padding: 0; /* Reset padding */
+        flex-direction: column;
+        gap: 0px;
     }
 
-    .sidebar.open {
-        width: 250px;
-    }
-
-    .sidebar.open .sidebar-header h3 {
-        display: block;
-    }
-
-    .sidebar.open a span {
-        display: inline;
-    }
-
-    .sidebar.open ~ .content {
-        margin-left: 250px;
-    }
 }
+
