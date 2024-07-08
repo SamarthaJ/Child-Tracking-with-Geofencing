@@ -1,47 +1,129 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
+body {
+    background-color: #000;
+}
+:root {
+    --primary-color: #4a90e2;
+    --bg-color: #000000;
+    --text-color: #333;
+    --sidebar-bg: #ffffff;
+    --sidebar-hover: #e6f0ff;
 }
 
-#map {
-    z-index: 0;
-    height: 100%;
-    width: calc(100% - 300px); /* Adjust width considering the wider sidebar */
-    position: absolute;
-    top: 0;
-    right: 0;
+body html {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.wrapper {
+    display: flex;
+    height: 100vh;
 }
 
 .sidebar {
-    z-index: 1;
-    width: 300px; /* Increase the width of the sidebar */
     height: 100%;
-    background-color: #293045; /* Updated background color */
-    position: absolute;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
+    background-color: var(--sidebar-bg);
+    overflow-x: hidden;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    white-space: nowrap;
+}
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--primary-color);
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.toggle-btn:hover {
+    color: var(--primary-color);
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: var(--sidebar-hover);
+    color: var(--primary-color);
+}
+
+.sidebar a i {
+    min-width: 30px;
+    font-size: 20px;
+}
+
+.sidebar.closed {
+    width: 70px;
+}
+
+.sidebar.closed .sidebar-header h3 {
+    display: none;
+}
+
+.sidebar.closed a span {
+    display: none;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    transition: margin-left .3s;
+    margin-left: 250px;
+
+}
+
+.sidebar.closed ~ .content {
+    margin-left: 70px;
+}
+
+.newsidebar {
+    width: 300px;
+    background-color: #293045;
+    color: #fff;
     overflow-y: auto;
     box-shadow: 2px 0 50px rgba(0,0,0,0.1);
-    color: #fff; /* Text color updated to white for better contrast */
+    transition: 0.3s;
 }
 
 .topbar {
-    margin: 10px 10px 10px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background: linear-gradient(to right,#3C1C6F,#7236D5); /* Gradient background */
-    border-top-right-radius: 50px; /* Rounded top-right corner */
-    border-bottom-right-radius: 50px; /* Rounded bottom-right corner */
-}
-
-.hamberguer .line {
-    width: 25px;
-    height: 3px;
-    background-color: #fff; /* Updated to white for better contrast */
-    margin: 4px 0;
+    background: linear-gradient(to right,#3C1C6F,#7236D5);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .profile img {
@@ -51,11 +133,11 @@ body, html {
 }
 
 .container {
-    padding: 20px 10px; /* Increased padding for better spacing */
+    padding: 20px 10px;
 }
 
 .container h2 {
-    margin: 0 0 10px 0; /* Adjusted margins for better spacing */
+    margin: 0 0 10px 0;
     font-size: 20px;
     font-weight: normal;
 }
@@ -67,7 +149,6 @@ body, html {
     margin: 10px 0;
 }
 
-
 .devices .device {
     display: flex;
     align-items: center;
@@ -76,24 +157,24 @@ body, html {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    color: #333; /* Text color inside device */
-    position: relative; /* To use absolute positioning for .color */
+    color: #333;
+    position: relative;
     overflow: hidden;
 }
 
 .devices .device .color {
-    width: 10%; /* Set width to 10% */
-    height: 100%; /* Full height */
-    background-color: #007bff; /* Blue background */
-    position: absolute; /* Positioning to align with .device */
+    width: 10%;
+    height: 100%;
+    background-color: #007bff;
+    position: absolute;
     top: 0;
     left: 0;
 }
 
 .devices .device .details {
     flex: 1;
-    padding-left: 10px; /* Add padding for better spacing */
-    margin-left: 10%; /* Offset details to account for .color width */
+    padding-left: 10px;
+    margin-left: 10%;
 }
 
 .devices .device .details .name {
@@ -141,4 +222,44 @@ body, html {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#map {
+    flex: 1;
+    height: 100%;
+    transition: width .3s;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar .sidebar-header h3 {
+        display: none;
+    }
+
+    .sidebar a span {
+        display: none;
+    }
+
+    .content {
+        margin-left: 70px;
+    }
+
+    .sidebar.open {
+        width: 250px;
+    }
+
+    .sidebar.open .sidebar-header h3 {
+        display: block;
+    }
+
+    .sidebar.open a span {
+        display: inline;
+    }
+
+    .sidebar.open ~ .content {
+        margin-left: 250px;
+    }
 }

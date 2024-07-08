@@ -7,48 +7,56 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="topbar">
-            <!-- Hamberguer menu -->
-            <div class="hamberguer">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
+    <div class="wrapper">
+        <div id="mySidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+                <button class="toggle-btn" onclick="toggleNav()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <!-- Profile Picture -->
-            <div class="profile">
-                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="">
-            </div>
+            <a href="#"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="#"><i class="fas fa-chart-line"></i> <span>Dashboard</span></a>
+            <a href="#"><i class="fas fa-user"></i> <span>Profile</span></a>
+            <a href="#"><i class="fas fa-envelope"></i> <span>Messages</span></a>
+            <a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a>
         </div>
-        <div class="container">
-            <h2>Devices</h2>
-            <hr>
-            <div class="devices">
-                <div class="device">
-                    <div class="color"></div>
-                    <div class="details">
-                        <h3 class="name">Device Name</h3>
-                        <p class="last">Last Location: lat: 12.99218, long: 75.3403</p> 
-                        <p class="discription">Discription</p>
-                        <div class="editload">
-                            <a href="#">Edit</a>
-                            <a href="#"><img src="https://img.icons8.com/ios/50/000000/refresh.png" alt=""></a>
+        <div class="content">
+            <div class="newsidebar">
+                <div class="topbar">
+                    <div class="profile">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="">
+                    </div>
+                </div>
+                <div class="container">
+                    <h2>Devices</h2>
+                    <hr>
+                    <div class="devices">
+                        <div class="device">
+                            <div class="color"></div>
+                            <div class="details">
+                                <h3 class="name">Device Name</h3>
+                                <p class="last">Last Location: lat: 12.99218, long: 75.3403</p>
+                                <p class="discription">Discription</p>
+                                <div class="editload">
+                                    <a href="#">Edit</a>
+                                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/refresh.png" alt=""></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="map"></div>
         </div>
-        <!-- Add btn -->
-        <button class="addbtn"><img src="https://img.icons8.com/ios/50/000000/add.png" alt=""></button>
     </div>
-    <div id="map">
-        
-    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="main.js"></script>
