@@ -1,0 +1,239 @@
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Modern Sidebar Menu with Internal Toggle</title>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <style>
+     :root {
+            --primary-color: #4a90e2;
+            --bg-color: #f4f7fa;
+            --text-color: #333;
+            --sidebar-bg: #ffffff;
+            --sidebar-hover: #e6f0ff;
+        }
+        .wrapper {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+            justify-content: space-around;
+
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: var(--sidebar-bg);
+            overflow-x: hidden;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+        .sidebar-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .toggle-btn:hover {
+            color: var(--primary-color);
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 16px;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+        }
+        .sidebar a:hover {
+            background-color: var(--sidebar-hover);
+            color: var(--primary-color);
+        }
+        .sidebar a i {
+            min-width: 30px;
+            font-size: 20px;
+        }
+        .main {
+            transition: margin-left .3s;
+            padding: 20px;
+            margin-left: 250px;
+        }
+        .sidebar.closed {
+            width: 70px;
+        }
+        .sidebar.closed .sidebar-header h3 {
+            display: none;
+        }
+        .sidebar.closed a span {
+            display: none;
+        }
+        .sidebar.closed ~ #main {
+            margin-left: 70px;
+        }
+        
+        #content {
+            display: flex;
+            flex: 1;
+            transition: margin-left .3s;
+            margin-left: 250px;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+        }       
+
+.profile_pic {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px;
+    border: #333 1px solid;
+}
+        
+@media screen and (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; /* Change flex direction to column for mobile */
+        justify-content: space-between;
+    }
+
+    #map {
+        order: 1; /* Ensure map comes first */
+        width: 100%; /* Full width for map */
+    }
+    span {
+        display: none;
+    }
+    .sidebar-header {
+        display: none;
+    }
+    .newsidebar {
+        order: 2; /* Put newsidebar in the middle */
+        width: 100%; /* Full width for newsidebar */
+        height: auto;
+    }
+
+    .sidebar {
+        order: 3; /* Put sidebar at the bottom */
+        width: 100%; /* Full width for sidebar */
+        position: relative; /* Reset position */
+        height: auto; /* Allow height to adjust */
+        display: flex; /* Display children in a row */
+        justify-content: space-around; /* Center items with space between */
+        align-items: center; /* Center vertically */
+        padding: 5px 0; /* Add padding for spacing */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap;
+    }
+
+    .sidebar.closed {
+        width: 100%; /* Adjust width when closed */
+    }
+
+    .sidebar.closed ~ .main {
+        margin-left: 0; /* Adjust margin when sidebar is closed */
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px; /* Add smaller margin between links */
+        padding: 5px; /* Add padding inside links */
+        min-width: 70px; /* Minimum width for links */
+        white-space: nowrap; /* Prevent text wrap */
+    }
+
+    .sidebar a:first-child {
+        display: none; /* Hide the first link */
+    }
+
+    .sidebar a:hover {
+        background-color: var(--sidebar-hover);
+        color: var(--primary-color);
+    }
+
+    .sidebar a i {
+        margin-right: 5px; /* Add space between icon and text */
+    }
+
+    #content {
+        margin: 0; /* Reset margin */
+        padding: 0; /* Reset padding */
+        flex-direction: column;
+        gap: 0px;
+    }
+
+}
+  </style>
+
+  <body>
+    <div class="wrapper">
+
+        <div id="mySidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+                <button class="toggle-btn" onclick="toggleNav()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="profile.html"><i class="fas fa-user"></i> <span>Profile</span></a>
+            <a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a>
+        </div>
+        
+        <div id="content">
+            <div class="profile_pic">
+                <img class="profile_pic" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Picture">
+            </div>
+            <div class="profile_info">
+                <h1>John Doe</h1>
+                <p>Software Developer</p>
+                <p>Location: Unknown</p>
+            </div>
+        </div>
+    </div>
+    </body>
+    
+    <script>
+        function toggleNav() {
+            const sidebar = document.getElementById("mySidebar");
+            const main = document.getElementById("main");
+            sidebar.classList.toggle("closed");
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle("open");
+            }
+        }
+        </script>
