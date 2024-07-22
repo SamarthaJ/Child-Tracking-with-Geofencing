@@ -29,6 +29,7 @@ window.onload = function() {
 };
 
 function loadData() {
+    console.log('Loading data...');
     const dbRef = ref(database);
     get(child(dbRef, 'location')).then((snapshot) => {
         if (snapshot.exists()) {
@@ -43,6 +44,7 @@ function loadData() {
     }).catch((error) => {
         console.error(error);
     });
+    console.log('Loaded data:', lat, long, rand);
 }
 
 function initMap() {

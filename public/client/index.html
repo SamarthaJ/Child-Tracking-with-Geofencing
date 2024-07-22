@@ -75,6 +75,7 @@ function getLocation() {
 let current_lat = null; 
 let current_long = null;
 function load_firebase(lat, long) {
+    console.log(lat, long);
     set(ref(database, 'location'), {
         latitude: lat,
         longitude: long,
