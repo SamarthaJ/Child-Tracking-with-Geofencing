@@ -13,7 +13,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const messaging = getMessaging(app);
 
 let lat = 0;
 let long = 0;
