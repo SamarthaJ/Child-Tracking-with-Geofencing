@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
-import { getMessaging , getToken } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-messaging.js";
+import { getMessaging  } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-messaging.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBE0SqJqJ24rfDltYeXg71J4trb8tsXHZY",
@@ -24,7 +24,6 @@ let bounds = null;
 let map = null;
 
 window.onload = function() {
-    notify();
     initMap();
     loadData();
     setInterval(loadData, 15000);
@@ -79,6 +78,15 @@ function initMap() {
         console.log("Layer created and added to drawnItems:", layer);
     });
 
+    map.on('draw:edited', function (e) {
+        e.layers.eachLayer(function (layer) {
+            if (layer instanceof L.Rectangle) {
+                bounds = layer.getBounds(); // Update bounds when the rectangle is edited
+                console.log("Updated bounds after editing:", bounds);
+            }
+        });
+    });
+
     map.on('draw:deleted', function(e) {
         var deletedLayers = e.layers;
         deletedLayers.eachLayer(function(layer) {
@@ -119,18 +127,33 @@ function checkBounds() {
 }
 
 // Notification part
-async function notify() {
-    const registration = await Notification.requestPermission();
-    if (registration === 'granted') {
-        const token = await getToken(messaging, { vapidKey: 'BLYq5lyy2NIQAXK3yyC5DC6g0O_wAs15Of8gbp7dMmUPl08JFrLV36WLG7Qw2Gf2Ju6USSeE8bTQWK4qYibKqFA' });
-        console.log('Token:', token);
+function notify() {
+    navigator.serviceWorker.ready.then(registration => {
+        registration.showNotification('Alert', {
+            body: 'Device has left the predefined bounds.',
+            icon: '/path/to/icon.png',
+            tag: 'boundary-alert'
+        });
+    });
+    console.log("Notification triggered");
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    } else {
+        var notification = new Notification("Alert", {
+            body: "Device has left the predefined bounds."
+        });
     }
-    else {
-        console.log('Notification permission denied');
-    }
-
 }
 
+if ('Notification' in window && navigator.serviceWorker) {
+    Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+            console.log('Notification permission granted.');
+        } else {
+            console.log('Notification permission denied.');
+        }
+    });
+}
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
