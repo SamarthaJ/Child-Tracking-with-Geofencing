@@ -39,6 +39,8 @@
 
 window.onload = function() {
     getPermission();
+    setInterval(getLocation, 15000);
+    setInterval(showPosition, 15000);
 };
 
 function getPermission() {
