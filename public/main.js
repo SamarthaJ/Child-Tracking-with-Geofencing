@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
-import { getMessaging  } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-messaging.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBE0SqJqJ24rfDltYeXg71J4trb8tsXHZY",
