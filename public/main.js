@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
-
+// The below is the bowlerplate code from the firebase docs
 const firebaseConfig = {
-  apiKey: "AIzaSyBE0SqJqJ24rfDltYeXg71J4trb8tsXHZY",
+  apiKey: "YOURAPIKEY",
   authDomain: "csas-90a2d.firebaseapp.com",
   databaseURL: "https://csas-90a2d-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "csas-90a2d",
